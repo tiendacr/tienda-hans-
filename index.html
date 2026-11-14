@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tienda Hans: ropa, tenis y accesorios. Estilo esencial en blanco y negro.">
+  <title>Tienda Hans — Ropa, tenis y accesorios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">TIENDA <span>HANS</span></a>
+    <nav aria-label="Navegación principal">
+      <a href="#catalogo">Tienda</a>
+      <a href="#como-funciona">Información</a>
+      <button class="cart-toggle" id="open-cart" aria-label="Abrir carrito">Carrito <span id="cart-count">0</span></button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">ROPA · TENIS · ACCESORIOS</p>
+      <h1>Tu estilo.<br><em>Sin límites.</em></h1>
+      <p class="hero-copy">Encuentra tus básicos, tenis favoritos y accesorios para completar tu look. Estilo para todos los días.</p>
+      <a class="button button-dark" href="#catalogo">VER PRODUCTOS <span>↗</span></a>
+      <div class="hero-mark" aria-hidden="true">H.</div>
+    </section>
+    <section class="catalog section-wrap" id="catalogo">
+      <div class="section-heading">
+        <div><p class="eyebrow">TIENDA HANS</p><h2>Explora la colección</h2></div>
+        <p class="muted">Ropa, tenis y accesorios.</p>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+    <section class="info-band" id="como-funciona">
+      <div><p class="eyebrow">COMPRA SIMPLE</p><h2>Elige. Compra.<br><em>Disfruta.</em></h2></div>
+      <div class="info-steps">
+        <article><span>01</span><h3>Encuentra tu estilo</h3><p>Explora ropa, tenis y accesorios y agrega tus favoritos al carrito.</p></article>
+        <article><span>02</span><h3>Completa tu pedido</h3><p>Déjanos tus datos, talla si aplica y el método de entrega.</p></article>
+        <article><span>03</span><h3>Hans lo prepara</h3><p>Recibimos los detalles del pedido y coordinamos contigo la confirmación y entrega.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <a class="brand" href="#">TIENDA <span>HANS</span></a>
+    <p>Ropa · Tenis · Accesorios</p>
+    <small>© <span id="year"></span> TIENDA HANS</small>
+  </footer>
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="cart-drawer" aria-label="Carrito de compras" aria-hidden="true">
+    <div class="drawer-head"><div><p class="eyebrow">TU SELECCIÓN</p><h2>Carrito</h2></div><button class="icon-button" id="close-cart" aria-label="Cerrar">✕</button></div>
+    <div id="cart-items" class="cart-items"><p class="muted">Tu carrito está vacío.</p></div>
+    <div class="cart-bottom">
+      <div class="total-line"><span>Total</span><strong id="cart-total">₡0</strong></div>
+      <button class="button button-dark full" id="checkout-button">CONTINUAR CON EL PEDIDO</button>
+      <p class="fine-print">El pedido se registra en esta demostración. El pago real debe configurarse antes de vender.</p>
+    </div>
+  </aside>
+  <section class="checkout-modal" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title" hidden>
+    <button class="icon-button modal-close" id="close-checkout" aria-label="Cerrar">✕</button>
+    <p class="eyebrow">ÚLTIMO PASO</p><h2 id="checkout-title">Datos del pedido</h2>
+    <form id="checkout-form">
+      <label>Nombre completo<input name="name" required autocomplete="name" placeholder="Tu nombre"></label>
+      <label>Teléfono / WhatsApp<input name="phone" required autocomplete="tel" placeholder="8888 8888"></label>
+      <label>Correo electrónico<input name="email" type="email" required autocomplete="email" placeholder="correo@ejemplo.com"></label>
+      <label>Dirección o lugar de entrega<textarea name="address" required rows="3" placeholder="Provincia, cantón, señas..."></textarea></label>
+      <label>Método de entrega<select name="delivery" required><option value="">Selecciona una opción</option><option>Envío a domicilio</option><option>Retiro en punto acordado</option></select></label>
+      <label>Talla / color / detalles<textarea name="notes" rows="2" placeholder="Indica tallas, colores u otra especificación"></textarea></label>
+      <div class="checkout-actions">
+        <button class="button button-dark full" type="submit" name="channel" value="web">CONTINUAR COMPRA EN LA WEB</button>
+        <button class="button button-outline full" type="button" id="whatsapp-checkout">PEDIR POR WHATSAPP ↗</button>
+      </div>
+      <p class="fine-print">Métodos previstos: SINPE Móvil al 6134-4327 y tarjetas. El cobro con tarjeta requiere conectar una pasarela segura antes de vender. Esta versión aún no procesa pagos ni confirma transferencias. Nunca ingreses datos de tarjetas en este formulario.</p>
+    </form>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

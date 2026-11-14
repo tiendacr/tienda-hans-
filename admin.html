@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pedidos — TIENDA HANS</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="site-header"><a class="brand" href="index.html">NEGRO <span>/</span> BLANCO</a><nav><a href="index.html">Volver a la tienda</a></nav></header>
+<main class="section-wrap">
+  <p class="eyebrow">PANEL LOCAL DE DEMOSTRACIÓN</p><h1 style="font-size:clamp(44px,7vw,76px)">Pedidos</h1>
+  <p class="muted">Estos pedidos solo aparecen en el mismo navegador y dispositivo donde se hicieron. No es un panel privado conectado a internet.</p>
+  <div id="orders" style="margin-top:35px"></div>
+</main>
+<script>
+const money=n=>new Intl.NumberFormat("es-CR",{style:"currency",currency:"CRC",maximumFractionDigits:0}).format(n);
+const orders=JSON.parse(localStorage.getItem("nb-orders")||"[]");
+const root=document.querySelector("#orders");
+if(!orders.length){root.innerHTML='<p class="muted">Todavía no hay pedidos guardados en este navegador.</p>'}
+else root.innerHTML=orders.map(o=>`<article style="border-top:1px solid #ddd;padding:24px 0">
+<h2 style="font-size:25px">Pedido #${String(o.number).slice(-6)}</h2>
+<p class="muted">${new Date(o.createdAt).toLocaleString("es-CR")} · ${o.status}</p>
+<p><b>${o.customer.name}</b> · ${o.customer.phone}<br>${o.customer.email}<br>${o.customer.address}<br>${o.customer.delivery}</p>
+<ul>${o.items.map(i=>`<li>${i.qty} × ${i.name} — ${money(i.price*i.qty)}</li>`).join("")}</ul>
+<p><b>Total: ${money(o.total)}</b></p>
+</article>`).join("");
+</script></body></html>
